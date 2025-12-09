@@ -183,22 +183,74 @@ const Portfolio = () => {
 
   const education = [
     {
+      title: 'Arquitecta',
+      institution: 'Universidad de Viña del Mar',
+      year: '2019',
+      description: 'Título Profesional de Arquitecta'
+    },
+    {
       title: 'Diplomado en Modelamiento BIM',
-      institution: 'Instituto Euskadi',
-      year: 'En curso - 2025',
-      focus: 'Coordinación MEP y optimización de proyectos de infraestructura'
+      institution: 'Instituto de Capacitación Euskadi',
+      year: '2025',
+      description: 'Diplomado orientado al modelamiento digital de proyectos de edificación mediante metodología BIM, integrando arquitectura, estructuras y especialidades MEP para la gestión eficiente de obras. La formación permite desarrollar modelos integrales en Revit, generar información técnica, reportes de coordinación y apoyar procesos de planificación y control de proyectos constructivos.',
+      competencies: [
+        'Modelación BIM en Revit: arquitectura, estructuras y MEP',
+        'Elaboración de planos, detalles técnicos y documentación desde modelos BIM',
+        'Generación de reportes: ITO, gerenciales, coordinación y control de obra',
+        'Procesamiento de datos IFC y flujos colaborativos',
+        'Dominio de AutoCAD a nivel medio para complementar modelación'
+      ],
+      certifications: [
+        'AutoCAD',
+        'BIM Arquitectura',
+        'BIM Estructuras',
+        'BIM MEP'
+      ]
     },
     {
       title: 'Diplomado en Desarrollo Local Inclusivo',
       institution: 'Universidad Alberto Hurtado',
       year: '2023',
-      focus: 'Políticas Públicas, Planificación Urbana Sostenible y Participación Ciudadana'
+      description: 'Diplomado orientado a comprender y gestionar procesos de desarrollo territorial desde un enfoque inclusivo, participativo y sostenible. La formación integra herramientas de diagnóstico socio–territorial, formulación de proyectos públicos, políticas urbanas, participación ciudadana y planificación local, fortaleciendo la capacidad de articular soluciones contextualizadas para comunidades y gobiernos locales.',
+      competencies: [
+        'Diagnóstico territorial y análisis socio–espacial',
+        'Formulación de proyectos de inversión pública (PMU, FRIL, MINVU, entre otros)',
+        'Diseño y ejecución de metodologías participativas y co-diseño comunitario',
+        'Gestión local: instrumentos de planificación, gobernanza municipal y políticas públicas',
+        'Enfoque inclusivo y sostenible aplicado al desarrollo urbano y rural'
+      ],
+      applications: [
+        'Planificación urbana y desarrollo local',
+        'Proyectos comunitarios y de infraestructura pública',
+        'Procesos participativos y levantamiento de necesidades territoriales',
+        'Coordinación institucional con municipios, ministerios y fundaciones'
+      ]
     },
     {
-      title: 'Arquitectura',
-      institution: 'Universidad de Viña del Mar',
-      year: '2019',
-      focus: 'Título Profesional de Arquitecta'
+      title: 'Diplomado en Coaching en Programación Neurolingüística (PNL)',
+      institution: 'Dharti, Escuela de crecimiento personal',
+      year: '2021',
+      description: 'Diplomado orientado al desarrollo de habilidades comunicacionales, liderazgo personal y acompañamiento orientado al cambio. La formación entrega herramientas de Programación Neurolingüística aplicadas a la gestión de equipos, la resolución de conflictos, la comunicación efectiva y la facilitación de procesos de desarrollo personal y profesional.',
+      competencies: [
+        'Técnicas de PNL para comunicación efectiva y mediación',
+        'Herramientas de coaching para acompañar procesos de cambio y toma de decisiones',
+        'Gestión emocional y estrategias de liderazgo personal',
+        'Facilidades para trabajo colaborativo, escucha activa y construcción de acuerdos',
+        'Aplicación de PNL en contextos laborales, comunitarios y de resolución de conflictos'
+      ],
+      applications: [
+        'Trabajo comunitario y facilitación de procesos participativos',
+        'Coordinación de equipos multidisciplinarios',
+        'Atención ciudadana, mediación y orientación técnica',
+        'Gestión de proyectos con enfoque relacional y liderazgo colaborativo',
+        'Comunicación interpersonal en contextos públicos, privados y territoriales'
+      ]
+    },
+    {
+      title: 'Curso Capacitación Todo sobre la subdivisión de predios rústicos (SPR)',
+      institution: 'Impartido por SAG',
+      year: '2025',
+      description: 'Capacitación especializada en subdivisión de predios rústicos'
     }
   ];
 
@@ -485,23 +537,78 @@ const Portfolio = () => {
           {/* Formación */}
           <div className="mt-20">
             <h3 className="text-3xl font-light mb-10 text-center text-amber-900">
-              Formación Continua
+              Formación Académica
             </h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="space-y-8">
               {education.map((edu, index) => (
-                <div key={index} className="bg-gradient-to-br from-amber-50 to-stone-50 rounded-xl p-6 border border-amber-100">
-                  <div className="text-sm text-amber-700 font-medium mb-2">
-                    {edu.year}
+                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg border border-stone-100">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                    <div>
+                      <h4 className="text-xl font-medium text-amber-900 mb-2">
+                        {index + 1}. {edu.title}
+                      </h4>
+                      <p className="text-stone-600 text-sm mb-1">
+                        {edu.institution}
+                      </p>
+                      <p className="text-amber-700 font-medium text-sm">
+                        {edu.year}
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-medium text-stone-900 mb-2">
-                    {edu.title}
-                  </h4>
-                  <div className="text-sm text-stone-600 mb-3">
-                    {edu.institution}
-                  </div>
-                  <p className="text-sm text-stone-600 leading-relaxed">
-                    {edu.focus}
-                  </p>
+
+                  {edu.description && (
+                    <p className="text-stone-700 mb-6 leading-relaxed">
+                      {edu.description}
+                    </p>
+                  )}
+
+                  {edu.competencies && edu.competencies.length > 0 && (
+                    <div className="mb-6">
+                      <h5 className="text-lg font-medium text-amber-800 mb-3">
+                        Competencias adquiridas
+                      </h5>
+                      <div className="space-y-2 ml-4">
+                        {edu.competencies.map((comp, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <span className="text-amber-600 font-bold mt-0.5">•</span>
+                            <span className="text-stone-600">{comp}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {edu.certifications && edu.certifications.length > 0 && (
+                    <div className="mb-6">
+                      <h5 className="text-lg font-medium text-amber-800 mb-3">
+                        Certificaciones obtenidas
+                      </h5>
+                      <div className="space-y-2 ml-4">
+                        {edu.certifications.map((cert, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <span className="text-amber-600 font-bold mt-0.5">•</span>
+                            <span className="text-stone-600">{cert}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {edu.applications && edu.applications.length > 0 && (
+                    <div>
+                      <h5 className="text-lg font-medium text-amber-800 mb-3">
+                        Ámbitos de aplicación profesional
+                      </h5>
+                      <div className="space-y-2 ml-4">
+                        {edu.applications.map((app, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <span className="text-amber-600 font-bold mt-0.5">•</span>
+                            <span className="text-stone-600">{app}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
