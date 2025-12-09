@@ -786,7 +786,8 @@ const Portfolio = () => {
             
             <div className="relative">
               {/* Carrusel Principal */}
-              <div className="relative w-full h-96 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6 cursor-pointer group"
+              <div className="relative w-full bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6 cursor-pointer group"
+                style={{ height: '600px' }}
                 onMouseEnter={() => setResinHoveredImage(
                   [
                     '/images/resin/BOWTIE_PHOTO_02.png',
@@ -811,7 +812,7 @@ const Portfolio = () => {
                     '/images/resin/ME_PHOTO_02.jpeg',
                   ][resinCarouselIndex]}
                   alt={`Pieza de resina ${resinCarouselIndex + 1}`}
-                  className="w-full h-full object-cover group-hover:opacity-75 transition-opacity"
+                  className="w-full h-full object-contain group-hover:opacity-75 transition-opacity p-4"
                 />
                 <div className="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-white text-sm">
                   {resinCarouselIndex + 1} / 7
