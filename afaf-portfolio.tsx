@@ -762,18 +762,6 @@ const Portfolio = () => {
                 <p className="text-stone-600 text-sm italic mb-6">
                   La misma filosofía que aplico en arquitectura: respeto por los materiales, atención al detalle, y búsqueda de belleza en lo funcional.
                 </p>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // Aquí irá la lógica de descarga de PDF
-                    alert('Función de descarga de PDF disponible próximamente');
-                  }}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
-                >
-                  <span>📥</span>
-                  Descargar Portfolio de Resina (PDF)
-                </a>
               </div>
             </div>
           </div>
@@ -879,9 +867,20 @@ const Portfolio = () => {
               </div>
             </div>
 
-            <p className="text-center text-stone-600 text-sm mt-6">
+            <p className="text-center text-stone-600 text-sm mt-6 mb-6">
               Pasa el mouse sobre la imagen para ver una vista ampliada. Usa los botones de navegación para explorar la galería completa de piezas en resina ecológica.
             </p>
+
+            <div className="flex justify-center">
+              <a
+                href="/portfolio-resina.pdf"
+                download="Portfolio-Resina-ABF.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
+              >
+                <span>📥</span>
+                Descargar Portfolio de Resina (PDF)
+              </a>
+            </div>
           </div>
         </div>
       </section>
