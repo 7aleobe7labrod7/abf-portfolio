@@ -1,11 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Mail, Phone, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
+
+interface Project {
+  id: number;
+  title: string;
+  year: string;
+  type: string;
+  location: string;
+  description: string;
+  concept: string;
+  color: string;
+}
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // CSS para animación de scroll infinito
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-scroll {
+        animation: scroll 40s linear infinite;
+      }
+      .animate-scroll:hover {
+        animation-play-state: paused;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +63,7 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string): void => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -133,8 +169,108 @@ const Portfolio = () => {
     }
   ];
 
+  // Film strip images - Placeholders que serán reemplazados con imágenes reales
+  interface FilmStripImage {
+    id: number;
+    title: string;
+    subtitle: string;
+    color: string;
+    imagePath?: string;
+  }
+
+  const filmStripImages: FilmStripImage[] = [
+    {
+      id: 1,
+      title: 'PLAZA URBANA',
+      subtitle: 'Espacios públicos',
+      color: 'from-stone-600 to-stone-800',
+      imagePath: '/images/1.jpg'
+    },
+    {
+      id: 2,
+      title: 'ANFITEATRO',
+      subtitle: 'Integración territorial',
+      color: 'from-slate-600 to-slate-800',
+      imagePath: '/images/2.png'
+    },
+    {
+      id: 3,
+      title: 'INTERIOR',
+      subtitle: 'Diseño de detalle',
+      color: 'from-zinc-600 to-zinc-800',
+      imagePath: '/images/3.jpg'
+    },
+    {
+      id: 4,
+      title: 'CENTRO CULTURAL',
+      subtitle: 'Proyecto de título',
+      color: 'from-neutral-600 to-neutral-800',
+      imagePath: '/images/4.jpg'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
+      {/* Film Strip Header */}
+      <div className="relative w-full bg-black overflow-hidden py-4 border-y-4 border-stone-800">
+        {/* Perforaciones superiores */}
+        <div className="absolute top-0 left-0 right-0 h-3 flex justify-around">
+          {[...Array(40)].map((_, i) => (
+            <div key={`top-${i}`} className="w-2 h-2 bg-stone-800 rounded-sm"></div>
+          ))}
+        </div>
+        
+        {/* Imágenes en carrusel */}
+        <div className="flex gap-3 px-6 animate-scroll">
+          {[...filmStripImages, ...filmStripImages].map((item, index) => (
+            <div
+              key={index}
+              className="relative group flex-shrink-0 transition-all duration-500 ease-in-out"
+              style={{ width: '280px', height: '180px' }}
+            >
+              <div className="w-full h-full overflow-hidden rounded-sm border-2 border-stone-700 bg-stone-900 shadow-lg group-hover:scale-110 group-hover:h-[240px] group-hover:z-10 transition-all duration-500">
+                {/* Cargar imagen o mostrar placeholder */}
+                {item.imagePath ? (
+                  <img
+                    src={item.imagePath}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className={`w-full h-full bg-gradient-to-br ${item.color} flex items-center justify-center p-6 group-hover:scale-105 transition-all duration-500`}>
+                    <div className="text-center">
+                      <div className="text-white/90 font-light text-lg mb-1 tracking-wider">
+                        {item.title}
+                      </div>
+                      <div className="text-white/60 text-xs uppercase tracking-widest">
+                        {item.subtitle}
+                      </div>
+                      <div className="mt-4 text-amber-400/50 text-xs">
+                        [ Imagen próximamente ]
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {/* Overlay vintage */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500"></div>
+              </div>
+              
+              {/* Número de frame tipo película */}
+              <div className="absolute bottom-1 right-2 text-amber-400 text-xs font-mono opacity-70">
+                {String((index % 4) + 1).padStart(2, '0')}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Perforaciones inferiores */}
+        <div className="absolute bottom-0 left-0 right-0 h-3 flex justify-around">
+          {[...Array(40)].map((_, i) => (
+            <div key={`bottom-${i}`} className="w-2 h-2 bg-stone-800 rounded-sm"></div>
+          ))}
+        </div>
+      </div>
+
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
@@ -559,7 +695,7 @@ const Portfolio = () => {
                     Mensaje
                   </label>
                   <textarea
-                    rows="4"
+                    rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all resize-none"
                     placeholder="Cuéntame sobre tu proyecto o consulta..."
                   ></textarea>

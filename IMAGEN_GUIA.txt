@@ -1,0 +1,62 @@
+// GUÍA: Cómo agregar tus imágenes al carrusel
+
+/*
+PASO 1: Coloca tus imágenes en la carpeta
+  public/images/
+
+PASO 2: En afaf-portfolio.tsx, edita el array 'filmStripImages'
+
+Estructura actual:
+```
+const filmStripImages: FilmStripImage[] = [
+  {
+    id: 1,
+    title: 'PLAZA URBANA',
+    subtitle: 'Espacios públicos',
+    color: 'from-stone-600 to-stone-800',
+    imagePath: '/images/plaza-urbana.jpg'  // ← AGRREGA AQUI LA RUTA
+  },
+  ...
+];
+```
+
+PASO 3: La imagen se cargará automáticamente
+
+EJEMPLO DE ESTRUCTURA DE CARPETAS:
+────────────────────────────────────
+portfolio-abf/
+├── public/
+│   └── images/
+│       ├── plaza-urbana.jpg           ← Tu imagen aquí
+│       ├── anfiteatro.jpg
+│       ├── interior.jpg
+│       └── centro-cultural.jpg
+├── src/
+├── afaf-portfolio.tsx
+├── package.json
+└── vite.config.ts
+
+
+FORMATOS SOPORTADOS:
+- JPG / JPEG
+- PNG
+- WebP (recomendado para web)
+- SVG
+
+RECOMENDACIONES:
+- Optimiza las imágenes antes de usarlas (herramientas: TinyPNG, ImageOptim)
+- Usa WebP para mejor compresión
+- Tamaño recomendado: 1200x800px o proporcionales
+- Peso máximo: 500KB por imagen
+
+PARA PROBAR:
+1. Coloca una imagen en public/images/plaza-urbana.jpg
+2. Ejecuta: npm run dev
+3. Abre http://localhost:5173
+4. Deberías ver la imagen en el carrusel principal
+
+NOTAS:
+- Si la imagen no existe, se mostrará el placeholder con gradiente
+- No necesitas reiniciar el servidor si solo cambias imágenes
+- Puedes cambiar los nombres en imagePath sin reiniciar
+*/
