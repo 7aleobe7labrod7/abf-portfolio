@@ -29,6 +29,7 @@ const Portfolio = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('inicio');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [resinCarouselIndex, setResinCarouselIndex] = useState(0);
 
   // CSS para animación de scroll infinito
   useEffect(() => {
@@ -743,13 +744,13 @@ const Portfolio = () => {
 
       {/* Proceso Creativo */}
       <section className="py-24 bg-gradient-to-b from-amber-50 to-stone-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-light mb-12 text-center text-amber-900">
             Más Allá de la Arquitectura
           </h2>
           
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
                 <h3 className="text-2xl font-medium text-amber-800 mb-4">
                   Arte en Resina Ecológica
@@ -757,19 +758,85 @@ const Portfolio = () => {
                 <p className="text-stone-700 leading-relaxed mb-4">
                   Mi práctica creativa se extiende al trabajo con resina ecológica, donde reutilizo materiales para crear piezas artísticas únicas. Esta disciplina paralela refuerza mi compromiso con la <span className="font-medium text-amber-800">sostenibilidad</span> y la capacidad de <span className="font-medium text-amber-800">transformar lo cotidiano en expresión</span>.
                 </p>
-                <p className="text-stone-600 text-sm italic">
+                <p className="text-stone-600 text-sm italic mb-6">
                   La misma filosofía que aplico en arquitectura: respeto por los materiales, atención al detalle, y búsqueda de belleza en lo funcional.
                 </p>
-              </div>
-              <div className="w-full md:w-64 h-64 bg-gradient-to-br from-amber-200 via-green-200 to-stone-200 rounded-xl flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-2">🎨</div>
-                  <p className="text-sm text-stone-600">
-                    Portfolio de resina disponible
-                  </p>
-                </div>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Aquí irá la lógica de descarga de PDF
+                    alert('Función de descarga de PDF disponible próximamente');
+                  }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
+                >
+                  <span>📥</span>
+                  Descargar Portfolio de Resina (PDF)
+                </a>
               </div>
             </div>
+          </div>
+
+          {/* Carrusel de Resina */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-medium text-amber-800 mb-6 text-center">
+              Galería de Piezas
+            </h3>
+            
+            <div className="relative">
+              {/* Carrusel */}
+              <div className="relative w-full h-96 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🎨</div>
+                    <p className="text-stone-600 mb-2">
+                      Pieza {resinCarouselIndex + 1} de 7
+                    </p>
+                    <p className="text-sm text-stone-500">
+                      [Placeholder - Imagen de resina]
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Botón anterior */}
+                <button
+                  onClick={() => setResinCarouselIndex((prev) => (prev - 1 + 7) % 7)}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all z-10"
+                  aria-label="Anterior"
+                >
+                  <ChevronRight size={24} className="transform rotate-180" />
+                </button>
+                
+                {/* Botón siguiente */}
+                <button
+                  onClick={() => setResinCarouselIndex((prev) => (prev + 1) % 7)}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all z-10"
+                  aria-label="Siguiente"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </div>
+
+              {/* Indicadores */}
+              <div className="flex justify-center gap-2">
+                {[...Array(7)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setResinCarouselIndex(i)}
+                    className={`h-2 rounded-full transition-all ${
+                      i === resinCarouselIndex
+                        ? 'bg-amber-700 w-8'
+                        : 'bg-stone-300 w-2 hover:bg-stone-400'
+                    }`}
+                    aria-label={`Ir a pieza ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <p className="text-center text-stone-600 text-sm mt-6">
+              Haz clic en los indicadores o usa los botones de navegación para explorar la galería completa de piezas en resina ecológica.
+            </p>
           </div>
         </div>
       </section>
