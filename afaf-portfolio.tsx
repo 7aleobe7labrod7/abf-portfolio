@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Mail, Phone, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface Experience {
+  title: string;
+  story: string;
+  subtitle?: string;
+  achievements: string[];
+  functionsSubtitle?: string;
+  functions?: string[];
+}
+
 interface Project {
   id: number;
   title: string;
+  subtitle?: string;
   year: string;
   type: string;
-  location: string;
+  location?: string;
   description: string;
   concept: string;
   color: string;
@@ -81,36 +92,58 @@ const Portfolio = () => {
 
   const experiences = [
     {
-      title: 'Consultora Regulatoria Municipal',
-      period: 'Mar 2024 - Actualidad',
-      location: 'Independiente',
-      story: 'Liderazgo en tramitación de expedientes complejos, asegurando conformidad normativa y articulando soluciones técnicas entre clientes y municipalidades.',
+      title: 'Planificación Urbana y Desarrollo Local',
+      story: 'Desarrollo proyectos urbanos, integrando diagnósticos, análisis urbano y estrategias de activación territorial. Mi experiencia se centra en la regeneración de espacios públicos, la planificación y desarrollo de infraestructura comunitaria y la articulación con comunidades e instituciones públicas para el desarrollo sostenible de los territorios.',
+      subtitle: 'Áreas de dominio',
       achievements: [
-        'Especialización en regularizaciones, modificaciones y deslindes',
-        'Elaboración de respuestas técnicas a observaciones DOM',
-        'Desarrollo de levantamientos planimétricos para saneamiento'
+        'Análisis y diagnóstico urbano–territorial',
+        'Diseño de espacios públicos y equipamiento',
+        'Participación ciudadana y metodologías colaborativas',
+        'Planificación local, coordinación institucional y gestión de proyectos públicos',
+        'Enfoque inclusivo y perspectiva comunitaria'
+      ],
+      functionsSubtitle: 'Funciones desempeñadas',
+      functions: [
+        'Formulación y desarrollo de proyectos de mejoramiento urbano, espacios públicos e infraestructura',
+        'Desarrollo e implementación de plan de intervención territorial, levantamiento socio-territorial y desarrollo de metodologías participativas',
+        'Gestión y articulación entre actores locales, organizaciones comunitarias, equipos multisectoriales',
+        'Presentación de proyectos ante equipos técnicos y autoridades gubernamentales',
+        'Elaboración de memorias técnicas, planos y presupuestos para proyectos con financiamento público'
       ]
     },
     {
-      title: 'Arquitecta Municipal',
-      period: 'Ago 2022 - Feb 2024',
-      location: 'I. Municipalidad de Paihuano',
-      story: 'Gestión socio-regulatoria en territorio rural, combinando rigor normativo con sensibilidad comunitaria para proyectos de desarrollo local.',
+      title: 'Coordinación de Expedientes Municipales',
+      story: 'Desarrollo y coordino expedientes municipales de diversa complejidad, integrando normativa urbana, levantamientos arquitectónicos, documentación técnica y tramitación municipal. Mi trabajo aborda permisos de edificación, obras menores, regularizaciones y análisis normativos, asegurando eficiencia en los procesos y cumplimiento de cada requerimiento de la Dirección de Obras Municipales.',
+      subtitle: 'Áreas de dominio',
       achievements: [
-        'Aseguramiento normativo LGUC y OGUC',
-        'Articulación entre necesidades ciudadanas y marco regulatorio',
-        'Coordinación de proyectos con financiamiento MINVU/SECPLAN'
+        'Análisis normativo OGUC, LGUC y ordenanzas locales',
+        'Formularios INE, antecedentes técnicos y levantamientos planimétricos',
+        'Regularización de viviendas y locales comerciales'
+      ],
+      functionsSubtitle: 'Funciones desempeñadas',
+      functions: [
+        'Elaboración de documentación técnica, planos, memorias y formularios',
+        'Tramitación de expedientes en DOM, presencial y en línea',
+        'Revisión normativa y verificación de cumplimiento normativo',
+        'Coordinación con clientes, revisores y unidades municipales',
+        'Consultas técnicas y resolución de observaciones'
       ]
     },
     {
-      title: 'Arquitecta Junior - Proyectos MEP',
-      period: '2021',
-      location: 'Almon SPA',
-      story: 'Desarrollo técnico de especialidades mecánicas, eléctricas y sanitarias, asegurando coherencia entre diseño y ejecución.',
+      title: 'Mantención de Infraestructura en Contextos Mineros',
+      story: 'Desarrollo de planos constructivos, detalles técnicos y documentación en entornos mineros de alta exigencia bajo estándares BHP. Asistir en la planificación y mantención de infraestructura de obras, remodelaciones de espacios de trabajo y actualización de cartografía para asegurar continuidad operativa y eficiencia en la gestión de activos.',
+      subtitle: 'Áreas de dominio',
       achievements: [
-        'Elaboración de planos MEP para proyectos residenciales',
-        'Control de calidad en inspecciones de obra',
-        'Coordinación interdisciplinaria desde anteproyecto hasta ejecución'
+        'Coordinación con equipos multidisciplinarios tales como ingenierías civiles, sanitarias y eléctricas',
+        'Levantamientos de infraestructura operativa, desarrollo técnico de estructuras, redes sanitarias y agua potable y remodelación funcional en espacios de trabajo',
+        'Estándares de faena BHP, normativa sectorial y seguridad industrial'
+      ],
+      functionsSubtitle: 'Funciones principales',
+      functions: [
+        'Actualización y desarrollo de planos, sistemas de redes, detalles técnicos y constructivos',
+        'Desarrollo de propuestas de mejora de instalaciones',
+        'Levantamiento de información técnica y documentación en terreno',
+        'Soporte en planificación de mantenciones y mejoras'
       ]
     }
   ];
@@ -402,39 +435,49 @@ const Portfolio = () => {
           <h2 className="text-4xl font-light mb-16 text-center text-amber-900">
             Trayectoria Profesional
           </h2>
-          
+
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-stone-100">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-medium text-amber-900 mb-2">
-                      {exp.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-4 text-sm text-stone-600">
-                      <span className="flex items-center gap-1">
-                        <MapPin size={16} />
-                        {exp.location}
-                      </span>
-                      <span className="text-amber-700 font-medium">
-                        {exp.period}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-medium text-amber-900 mb-6">
+                  {index === 0 ? `${index + 1}. ${exp.title}` : `${index + 1}. ${exp.title}`}
+                </h3>
                 
-                <p className="text-stone-700 mb-6 leading-relaxed">
+                <p className="text-stone-700 mb-8 leading-relaxed">
                   {exp.story}
                 </p>
                 
-                <div className="space-y-2">
-                  {exp.achievements.map((achievement, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <ChevronRight size={20} className="text-amber-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-stone-600">{achievement}</span>
+                {exp.subtitle && (
+                  <>
+                    <h4 className="text-xl font-medium text-amber-800 mb-4">
+                      {exp.subtitle}
+                    </h4>
+                    <div className="space-y-2 ml-4 mb-8">
+                      {exp.achievements.map((achievement, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="text-amber-600 font-bold mt-0.5">•</span>
+                          <span className="text-stone-600">{achievement}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
+
+                {exp.functionsSubtitle && exp.functions && (
+                  <>
+                    <h4 className="text-xl font-medium text-amber-800 mb-4">
+                      {exp.functionsSubtitle}
+                    </h4>
+                    <div className="space-y-2 ml-4">
+                      {exp.functions.map((func, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="text-amber-600 font-bold mt-0.5">•</span>
+                          <span className="text-stone-600">{func}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
