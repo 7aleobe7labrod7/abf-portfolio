@@ -157,20 +157,31 @@ const Portfolio = () => {
       type: 'Proyecto de Título',
       location: 'Viña del Mar',
       description: 'El proyecto aborda la degradación y desfragmentación del borde costero de Viña del Mar, proponiendo un equipamiento cultural efímero capaz de activar temporalmente sectores subutilizados y desconectados de la vida urbana. Se plantea un Ágora Marítima como espacio de encuentro abierto, flexible y móvil, diseñado para fomentar la integración social mediante actividades culturales itinerantes.',
-      concept: 'El enfoque parte de un diagnóstico territorial que identifica zonas residuales, vacíos urbanos y discontinuidades en la relación ciudad–mar. El diseño incorpora plataformas, recorridos, espacios multiuso y estructuras desmontables, configuradas para responder a distintos usos: talleres, presentaciones, ferias y eventos comunitarios. Su carácter efímero permite ocupar transitoriamente áreas en conflicto, promoviendo apropiación social, reconocimiento del paisaje costero y activación urbana sin alterar de manera permanente el territorio.',
+      concept: 'El enfoque parte de un diagnóstico territorial que identifica zonas residuales, vacíos urbanos y discontinuidades en la relación ciudad–mar (modelo de ciudad balneario). A partir de ello, el proyecto introduce una intervención que permite recuperar suelos fragmentados, facilitar el acceso comunitario y generar nuevas dinámicas culturales y recreativas. El diseño incorpora plataformas, recorridos, espacios multiuso y estructuras desmontables, configuradas para responder a distintos usos: talleres, presentaciones, ferias y eventos comunitarios. Su carácter efímero permite ocupar transitoriamente áreas en conflicto, promoviendo apropiación social, reconocimiento del paisaje costero y activación urbana sin alterar de manera permanente el territorio.',
       color: 'from-amber-100 to-orange-50',
       detailedConcept: 'En síntesis, el proyecto plantea una estrategia urbana y social, más que una obra edificada, orientada a reimaginar el borde costero como un espacio integrador, accesible y culturalmente activo, demostrando la capacidad de la arquitectura para transformar usos urbanos a través de intervenciones temporales y participativas.'
     },
     {
       id: 2,
+      title: 'Mejoramiento Villa Los Cántaros',
+      year: '2024',
+      type: 'Mejoramiento Urbano',
+      location: 'Comuna de Paihuano',
+      description: 'El proyecto de mejoramiento de la Plaza Villa Los Cántaros surge a partir del deterioro y abandono del espacio público, caracterizado por la ausencia de áreas verdes, sombreaderos, accesos adecuados y equipamiento recreativo, lo que ha impedido su uso por parte de la comunidad y ha debilitado la convivencia barrial.',
+      concept: 'A través de un diagnóstico participativo con los vecinos, se identifica la necesidad de recuperar este espacio como un lugar seguro, accesible y de encuentro, incorporando sombra, áreas verdes, mobiliario, juegos y accesibilidad universal.',
+      color: 'from-emerald-100 to-teal-50',
+      detailedConcept: 'La intervención busca no solo mejorar las condiciones físicas del lugar, sino también fortalecer la identidad comunitaria, el sentido de pertenencia y la cohesión social, transformando la plazuela en un punto activo de recreación y vida comunitaria para la Villa Los Cántaros.'
+    },
+    {
+      id: 3,
       title: 'Mejoramiento Plaza Miguel Apey',
-      year: 'En desarrollo',
+      year: '2024',
       type: 'Mejoramiento Urbano',
       location: 'Comuna de Paihuano',
       description: 'El proyecto de mejoramiento de la Plaza Miguel Apey surge para renovar y optimizar un espacio público central para la comunidad de Paihuano, ya que la plaza presenta infraestructura deteriorada, luminarias en mal estado, áreas verdes desorganizadas y equipamiento insuficiente.',
       concept: 'La intervención busca modernizar el espacio, haciéndolo más seguro, accesible y funcional, mediante la incorporación de rutas accesibles, reorganización de áreas verdes, nuevo mobiliario urbano, recambio de luminarias y la instalación de juegos infantiles y equipamiento recreativo.',
       color: 'from-green-100 to-emerald-50',
-      detailedConcept: 'Además, se pretende mejorar la calidad de vida de los habitantes, ofreciendo un espacio público adecuado para el encuentro comunitario, actividades familiares y recreación. El proyecto también considera un cierre perimetral y obras de nivelación, necesarias para asegurar condiciones óptimas de uso y seguridad. En síntesis, se realiza este proyecto para recuperar y potenciar un espacio urbano clave, garantizando accesibilidad universal, mejor iluminación, áreas verdes ordenadas y equipamiento moderno que responda a las necesidades actuales de la comunidad.'
+      detailedConcept: 'Además, se pretende mejorar la calidad de vida de los habitantes, ofreciendo un espacio público adecuado para el encuentro comunitario, actividades familiares y recreación. El proyecto también considera un cierre perimetral y obras de nivelación, necesarias para asegurar condiciones óptimas de uso y seguridad. En síntesis, se realiza este proyecto para recuperar y potenciar un espacio urbano clave, garantizando accesibilidad universal, mejor iluminación, áreas verdes ordenadas y equipamiento moderno que responda a las necesidades actuales del barrio Chanchoqui en la comuna de Paihuano.'
     }
   ];
 
