@@ -1,23 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Mail, Phone, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 
-// Import resin images
-// @ts-ignore - Vite handles image imports as URLs
-import resin1 from './assets/resin/BOWTIE_PHOTO_02.png';
-// @ts-ignore
-import resin2 from './assets/resin/CENICERO_PHOTO_01.png';
-// @ts-ignore
-import resin3 from './assets/resin/CENICERO_PHOTO_02.png';
-// @ts-ignore
-import resin4 from './assets/resin/CORAZON_PHOTO_01.jpeg';
-// @ts-ignore
-import resin5 from './assets/resin/CUADRO_PHOTO_01.png';
-// @ts-ignore
-import resin6 from './assets/resin/CUADRO_PHOTO_03.png';
-// @ts-ignore
-import resin7 from './assets/resin/ME_PHOTO_02.jpeg';
-
-const resinImages = [resin1, resin2, resin3, resin4, resin5, resin6, resin7];
+// Import resin images using Vite glob with specific ordering
+// @ts-ignore - Vite handles dynamic imports
+const resinImageModules = import.meta.glob<{ default: string }>('./src/assets/resin/*.{png,jpeg}', { eager: true });
+const resinImages = [
+  resinImageModules['./src/assets/resin/BOWTIE_PHOTO_02.png']?.default,
+  resinImageModules['./src/assets/resin/CENICERO_PHOTO_01.png']?.default,
+  resinImageModules['./src/assets/resin/CENICERO_PHOTO_02.png']?.default,
+  resinImageModules['./src/assets/resin/CORAZON_PHOTO_01.jpeg']?.default,
+  resinImageModules['./src/assets/resin/CUADRO_PHOTO_01.png']?.default,
+  resinImageModules['./src/assets/resin/CUADRO_PHOTO_03.png']?.default,
+  resinImageModules['./src/assets/resin/ME_PHOTO_02.jpeg']?.default,
+].filter(Boolean) as string[];
 
 interface Project {
   id: number;
