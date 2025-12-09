@@ -1,16 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Mail, Phone, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface Experience {
-  title: string;
-  story: string;
-  subtitle?: string;
-  achievements: string[];
-  functionsSubtitle?: string;
-  functions?: string[];
-}
-
 interface Project {
   id: number;
   title: string;
@@ -32,7 +22,6 @@ const Portfolio = () => {
   const [resinCarouselIndex, setResinCarouselIndex] = useState(0);
   const [resinHoveredImage, setResinHoveredImage] = useState<string | null>(null);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [formMessage, setFormMessage] = useState('');
 
   // CSS para animación de scroll infinito
   useEffect(() => {
@@ -966,7 +955,6 @@ const Portfolio = () => {
                 className="space-y-4"
                 onSubmit={() => {
                   setFormStatus('loading');
-                  setFormMessage('');
                 }}
               >
                 <div>
