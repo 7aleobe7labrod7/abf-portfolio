@@ -754,13 +754,19 @@ const Portfolio = () => {
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-1">
                 <h3 className="text-2xl font-medium text-amber-800 mb-4">
-                  Arte en Resina Ecológica
+                  Resin Artist
                 </h3>
                 <p className="text-stone-700 leading-relaxed mb-4">
-                  Mi práctica creativa se extiende al trabajo con resina ecológica, donde reutilizo materiales para crear piezas artísticas únicas. Esta disciplina paralela refuerza mi compromiso con la <span className="font-medium text-amber-800">sostenibilidad</span> y la capacidad de <span className="font-medium text-amber-800">transformar lo cotidiano en expresión</span>.
+                  Siempre he sido muy curiosa en el área artística. Desde pequeña me ha fascinado aprender manualidades, técnicas y oficios nuevos. Es parte de mi, de mi personalidad y de mi esencia, conocer, aprender y entender que el arte aparece a través de múltiples visiones y formas.
+                </p>
+                <p className="text-stone-700 leading-relaxed mb-4">
+                  Así fue como seguí el mundo de la resina, en un momento en que necesitaba determene y hacer algo que me conectara conmigo misma. Ser una persona observadora y sensible a los detalles y las texturas hizo que este material se volviera ideal para mí. Me permitió comprender que nada es completamente controlable y que siempre existe un margen para lo inesperado.
+                </p>
+                <p className="text-stone-700 leading-relaxed mb-4">
+                  Muchas de las piezas que he creado mezclan resina con madera reciclada, porque me importa darle una nueva vida a aquello que, en teoría, ya cumplió su ciclo.
                 </p>
                 <p className="text-stone-600 text-sm italic mb-6">
-                  La misma filosofía que aplico en arquitectura: respeto por los materiales, atención al detalle, y búsqueda de belleza en lo funcional.
+                  Mis creaciones son mi espacio seguro, una forma de bajar el ritmo, ordenar mis pensamientos y permitir que algo se exprese a través de mis manos. Es mi terapia, mi momento de quietud y libertad. Me permite experimentar sin presión, jugar, equivocarme y volver a intentar.
                 </p>
               </div>
             </div>
