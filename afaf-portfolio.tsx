@@ -21,6 +21,7 @@ interface Project {
   description: string;
   concept: string;
   color: string;
+  detailedConcept?: string;
 }
 
 const Portfolio = () => {
@@ -151,33 +152,25 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'Centro de Extensión Cultural Efímero',
+      title: 'Centro de Extensión Cultural Efímero — Ágora Marítima',
       year: '2019',
       type: 'Proyecto de Título',
       location: 'Viña del Mar',
-      description: 'Ágora marítima de suelos fragmentados para la integración social a través de actividades culturales itinerantes',
-      concept: 'Espacios flexibles que dialogan con el territorio costero, promoviendo encuentros ciudadanos espontáneos y programados.',
-      color: 'from-amber-100 to-orange-50'
+      description: 'El proyecto aborda la degradación y desfragmentación del borde costero de Viña del Mar, proponiendo un equipamiento cultural efímero capaz de activar temporalmente sectores subutilizados y desconectados de la vida urbana. Se plantea un Ágora Marítima como espacio de encuentro abierto, flexible y móvil, diseñado para fomentar la integración social mediante actividades culturales itinerantes.',
+      concept: 'El enfoque parte de un diagnóstico territorial que identifica zonas residuales, vacíos urbanos y discontinuidades en la relación ciudad–mar. El diseño incorpora plataformas, recorridos, espacios multiuso y estructuras desmontables, configuradas para responder a distintos usos: talleres, presentaciones, ferias y eventos comunitarios. Su carácter efímero permite ocupar transitoriamente áreas en conflicto, promoviendo apropiación social, reconocimiento del paisaje costero y activación urbana sin alterar de manera permanente el territorio.',
+      color: 'from-amber-100 to-orange-50',
+      detailedConcept: 'En síntesis, el proyecto plantea una estrategia urbana y social, más que una obra edificada, orientada a reimaginar el borde costero como un espacio integrador, accesible y culturalmente activo, demostrando la capacidad de la arquitectura para transformar usos urbanos a través de intervenciones temporales y participativas.'
     },
     {
       id: 2,
-      title: 'Casa Belmar',
-      year: '2021',
-      type: 'Proyecto Residencial',
-      location: 'Casablanca, Valparaíso',
-      description: 'Vivienda unifamiliar integrada al paisaje del valle',
-      concept: 'Diseño que respeta la topografía natural, con espacios que capturan la luz y el viento característicos del territorio vitivinícola.',
-      color: 'from-green-100 to-emerald-50'
-    },
-    {
-      id: 3,
-      title: 'Casa Ramírez-Vega',
-      year: '2021',
-      type: 'Proyecto Residencial',
-      location: 'Colina, Santiago',
-      description: 'Vivienda familiar con énfasis en espacios de convivencia',
-      concept: 'Arquitectura que privilegia la conexión entre interior y exterior, generando flujos naturales y áreas de encuentro familiar.',
-      color: 'from-stone-100 to-neutral-50'
+      title: 'Mejoramiento Plaza Miguel Apey',
+      year: 'En desarrollo',
+      type: 'Mejoramiento Urbano',
+      location: 'Comuna de Paihuano',
+      description: 'El proyecto de mejoramiento de la Plaza Miguel Apey surge para renovar y optimizar un espacio público central para la comunidad de Paihuano, ya que la plaza presenta infraestructura deteriorada, luminarias en mal estado, áreas verdes desorganizadas y equipamiento insuficiente.',
+      concept: 'La intervención busca modernizar el espacio, haciéndolo más seguro, accesible y funcional, mediante la incorporación de rutas accesibles, reorganización de áreas verdes, nuevo mobiliario urbano, recambio de luminarias y la instalación de juegos infantiles y equipamiento recreativo.',
+      color: 'from-green-100 to-emerald-50',
+      detailedConcept: 'Además, se pretende mejorar la calidad de vida de los habitantes, ofreciendo un espacio público adecuado para el encuentro comunitario, actividades familiares y recreación. El proyecto también considera un cierre perimetral y obras de nivelación, necesarias para asegurar condiciones óptimas de uso y seguridad. En síntesis, se realiza este proyecto para recuperar y potenciar un espacio urbano clave, garantizando accesibilidad universal, mejor iluminación, áreas verdes ordenadas y equipamiento moderno que responda a las necesidades actuales de la comunidad.'
     }
   ];
 
@@ -645,7 +638,8 @@ const Portfolio = () => {
                 <h3 className="text-xl font-medium text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-stone-600 mb-2">
+                <p className="text-sm text-stone-600 mb-3 flex items-center gap-2">
+                  <MapPin size={16} className="text-amber-600 flex-shrink-0" />
                   {project.location}
                 </p>
                 <p className="text-stone-600 text-sm leading-relaxed line-clamp-2">
@@ -689,7 +683,7 @@ const Portfolio = () => {
                 {selectedProject.title}
               </h3>
               <p className="text-stone-600 mb-6 flex items-center gap-2">
-                <MapPin size={18} />
+                <MapPin size={18} className="text-amber-600 flex-shrink-0" />
                 {selectedProject.location}
               </p>
               
@@ -711,6 +705,17 @@ const Portfolio = () => {
                     {selectedProject.concept}
                   </p>
                 </div>
+
+                {selectedProject.detailedConcept && (
+                  <div>
+                    <h4 className="text-lg font-medium text-amber-800 mb-2">
+                      Síntesis
+                    </h4>
+                    <p className="text-stone-700 leading-relaxed">
+                      {selectedProject.detailedConcept}
+                    </p>
+                  </div>
+                )}
                 
                 <div className="pt-4 border-t border-stone-200">
                   <p className="text-sm text-stone-500 italic">
