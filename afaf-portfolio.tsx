@@ -31,6 +31,8 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [resinCarouselIndex, setResinCarouselIndex] = useState(0);
   const [resinHoveredImage, setResinHoveredImage] = useState<string | null>(null);
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
 
   // CSS para animación de scroll infinito
   useEffect(() => {
@@ -958,15 +960,25 @@ const Portfolio = () => {
                 Envíame un Mensaje
               </h3>
               
-              <form className="space-y-4">
+              <form 
+                action="https://formspree.io/f/xyzazbpe"
+                method="POST"
+                className="space-y-4"
+                onSubmit={() => {
+                  setFormStatus('loading');
+                  setFormMessage('');
+                }}
+              >
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-2">
                     Nombre
                   </label>
                   <input
                     type="text"
+                    name="nombre"
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
                     placeholder="Tu nombre"
+                    required
                   />
                 </div>
                 
@@ -976,8 +988,10 @@ const Portfolio = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all"
                     placeholder="tu@email.com"
+                    required
                   />
                 </div>
                 
@@ -986,17 +1000,32 @@ const Portfolio = () => {
                     Mensaje
                   </label>
                   <textarea
+                    name="mensaje"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-stone-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all resize-none"
                     placeholder="Cuéntame sobre tu proyecto o consulta..."
+                    required
                   ></textarea>
                 </div>
+
+                {formStatus === 'success' && (
+                  <div className="p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg">
+                    ¡Gracias! Tu mensaje ha sido enviado correctamente.
+                  </div>
+                )}
+
+                {formStatus === 'error' && (
+                  <div className="p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg">
+                    Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.
+                  </div>
+                )}
                 
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
+                  disabled={formStatus === 'loading'}
+                  className="w-full px-6 py-4 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Enviar Mensaje
+                  {formStatus === 'loading' ? 'Enviando...' : 'Enviar Mensaje'}
                 </button>
                 
                 <p className="text-xs text-stone-500 text-center">
