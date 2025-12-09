@@ -632,7 +632,7 @@ const Portfolio = () => {
               <div
                 key={project.id}
                 onClick={() => setSelectedProject(project)}
-                className="group cursor-pointer"
+                className="group cursor-pointer flex flex-col h-full"
               >
                 <div className={`aspect-[4/3] bg-gradient-to-br ${project.color} rounded-xl mb-4 flex items-center justify-center overflow-hidden relative transition-transform duration-300 group-hover:scale-105`}>
                   <div className="absolute inset-0 bg-white/40 backdrop-blur-sm flex items-center justify-center p-8">
@@ -646,16 +646,18 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-xl font-medium text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-stone-600 mb-3 flex items-center gap-2">
-                  <MapPin size={16} className="text-amber-600 flex-shrink-0" />
-                  {project.location}
-                </p>
-                <p className="text-stone-600 text-sm leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
+                <div className="flex-grow flex flex-col">
+                  <h3 className="text-xl font-medium text-stone-900 mb-3 group-hover:text-amber-700 transition-colors line-clamp-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-stone-600 mb-4 flex items-center gap-2 mt-auto">
+                    <MapPin size={16} className="text-amber-600 flex-shrink-0" />
+                    {project.location}
+                  </p>
+                  <p className="text-stone-600 text-sm leading-relaxed line-clamp-2">
+                    {project.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
