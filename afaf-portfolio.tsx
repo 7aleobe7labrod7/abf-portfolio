@@ -372,16 +372,22 @@ const Portfolio = () => {
           </h2>
           <div className="space-y-8 text-lg leading-relaxed text-stone-700">
             <p className="font-light border-l-4 border-amber-600 pl-6 italic">
-              "La arquitectura nace del territorio y se completa con las personas que lo habitan."
+              “La arquitectura es realmente sobre bienestar. Creo que la gente quiere sentir que pertenece a un espacio. (Zaha Hadid)"
             </p>
             <p>
-              Mi práctica profesional se sostiene en la convicción de que <span className="font-medium text-amber-800">el espacio construido debe servir al bienestar colectivo</span>, articulando rigor técnico con profunda sensibilidad social.
+              A lo largo de mi formación y trayectoria en contextos diversos  <span className="font-medium text-amber-800">—comunitarios, rurales, mineros e independientes— </span>, 
+              comprendí que, aunque cada uno responde a dinámicas, realidades y lenguajes completamente distintos, todos convergen en un punto esencial: 
+              <span className="font-medium text-amber-800"> el diseño no comienza con una línea, sino con una conversación. </span>
+              Nace de observar la identidad del territorio, reconocer sus particularidades y conectar con las necesidades reales de las personas que lo habitan.
             </p>
             <p>
-              Combino cuatro años de experiencia en gestión pública y privada, donde he aprendido que la mejor arquitectura surge del <span className="font-medium text-amber-800">diálogo entre normativa, territorio y comunidad</span>.
+              Concibo la arquitectura como <span className="font-medium text-amber-800"> un ente articulador entre las personas y su entorno; </span>
+              un puente entre las necesidades colectivas y la capacidad creativa para transformarlas en soluciones pertinentes y significativas. 
+              Me motivan los procesos colectivos y la posibilidad de generar cambios concretos mediante intervenciones con enfoque socio‑territorial, orientadas hacia un desarrollo local sostenible en el tiempo.               
             </p>
             <p>
-              Desde la planificación municipal en territorios rurales hasta la asesoría regulatoria especializada, mi trabajo busca <span className="font-medium text-amber-800">traducir necesidades humanas en soluciones espaciales sostenibles</span>, siempre desde la ética, la colaboración y el compromiso con el desarrollo equitativo.
+              Creo en una arquitectura cercana y consciente; <span className="font-medium text-amber-800"> una arquitectura que dialogue con quienes la habitan y contribuya al bienestar, </span> 
+              al encuentro y al fortalecimiento de la identidad de los territorios, siempre desde la ética, la colaboración y el compromiso con el desarrollo equitativo.
             </p>
             <p className="text-xl font-light text-center pt-8 text-amber-800">
               Creo en una arquitectura que respira, que se adapta, que escucha.
