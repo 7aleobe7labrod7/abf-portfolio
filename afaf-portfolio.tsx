@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Linkedin, Mail, Phone, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 
+// Import resin images using Vite glob
+// @ts-ignore - Vite-specific import.meta.glob
+const resinImageModules = import.meta.glob<{ default: string }>('./assets/resin/*.{png,jpeg}', { eager: true });
+const resinImages = Object.values(resinImageModules).map((mod: any) => mod.default).sort();
+
 interface Project {
   id: number;
   title: string;
@@ -774,12 +779,12 @@ const Portfolio = () => {
               <div className="relative w-full bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6 cursor-pointer group"
                 style={{ height: '600px' }}
                 onMouseEnter={() => setResinHoveredImage(
-                  ['BOWTIE_PHOTO_02.png', 'CENICERO_PHOTO_01.png', 'CENICERO_PHOTO_02.png', 'CORAZON_PHOTO_01.jpeg', 'CUADRO_PHOTO_01.png', 'CUADRO_PHOTO_03.png', 'ME_PHOTO_02.jpeg'][resinCarouselIndex]
+                  resinImages[resinCarouselIndex]
                 )}
                 onMouseLeave={() => setResinHoveredImage(null)}
               >
                 <img
-                  src={`/abf-portfolio/images/resin/${['BOWTIE_PHOTO_02.png', 'CENICERO_PHOTO_01.png', 'CENICERO_PHOTO_02.png', 'CORAZON_PHOTO_01.jpeg', 'CUADRO_PHOTO_01.png', 'CUADRO_PHOTO_03.png', 'ME_PHOTO_02.jpeg'][resinCarouselIndex]}`}
+                  src={resinImages[resinCarouselIndex]}
                   alt={`Pieza de resina ${resinCarouselIndex + 1}`}
                   className="w-full h-full object-contain group-hover:opacity-75 transition-opacity p-4"
                 />
