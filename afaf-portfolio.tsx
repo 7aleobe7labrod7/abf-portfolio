@@ -786,16 +786,21 @@ const Portfolio = () => {
             <div className="relative">
               {/* Carrusel */}
               <div className="relative w-full h-96 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🎨</div>
-                    <p className="text-stone-600 mb-2">
-                      Pieza {resinCarouselIndex + 1} de 7
-                    </p>
-                    <p className="text-sm text-stone-500">
-                      [Placeholder - Imagen de resina]
-                    </p>
-                  </div>
+                <img
+                  src={[
+                    '/images/resin/BOWTIE_PHOTO_02.png',
+                    '/images/resin/CENICERO_PHOTO_01.png',
+                    '/images/resin/CENICERO_PHOTO_02.png',
+                    '/images/resin/CORAZON_PHOTO_01.jpeg',
+                    '/images/resin/CUADRO_PHOTO_01.png',
+                    '/images/resin/CUADRO_PHOTO_03.png',
+                    '/images/resin/ME_PHOTO_02.jpeg',
+                  ][resinCarouselIndex]}
+                  alt={`Pieza de resina ${resinCarouselIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-white text-sm">
+                  {resinCarouselIndex + 1} / 7
                 </div>
                 
                 {/* Botón anterior */}
