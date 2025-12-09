@@ -774,28 +774,12 @@ const Portfolio = () => {
               <div className="relative w-full bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6 cursor-pointer group"
                 style={{ height: '600px' }}
                 onMouseEnter={() => setResinHoveredImage(
-                  [
-                    '/images/resin/BOWTIE_PHOTO_02.png',
-                    '/images/resin/CENICERO_PHOTO_01.png',
-                    '/images/resin/CENICERO_PHOTO_02.png',
-                    '/images/resin/CORAZON_PHOTO_01.jpeg',
-                    '/images/resin/CUADRO_PHOTO_01.png',
-                    '/images/resin/CUADRO_PHOTO_03.png',
-                    '/images/resin/ME_PHOTO_02.jpeg',
-                  ][resinCarouselIndex]
+                  ['BOWTIE_PHOTO_02.png', 'CENICERO_PHOTO_01.png', 'CENICERO_PHOTO_02.png', 'CORAZON_PHOTO_01.jpeg', 'CUADRO_PHOTO_01.png', 'CUADRO_PHOTO_03.png', 'ME_PHOTO_02.jpeg'][resinCarouselIndex]
                 )}
                 onMouseLeave={() => setResinHoveredImage(null)}
               >
                 <img
-                  src={[
-                    '/images/resin/BOWTIE_PHOTO_02.png',
-                    '/images/resin/CENICERO_PHOTO_01.png',
-                    '/images/resin/CENICERO_PHOTO_02.png',
-                    '/images/resin/CORAZON_PHOTO_01.jpeg',
-                    '/images/resin/CUADRO_PHOTO_01.png',
-                    '/images/resin/CUADRO_PHOTO_03.png',
-                    '/images/resin/ME_PHOTO_02.jpeg',
-                  ][resinCarouselIndex]}
+                  src={`/abf-portfolio/images/resin/${['BOWTIE_PHOTO_02.png', 'CENICERO_PHOTO_01.png', 'CENICERO_PHOTO_02.png', 'CORAZON_PHOTO_01.jpeg', 'CUADRO_PHOTO_01.png', 'CUADRO_PHOTO_03.png', 'ME_PHOTO_02.jpeg'][resinCarouselIndex]}`}
                   alt={`Pieza de resina ${resinCarouselIndex + 1}`}
                   className="w-full h-full object-contain group-hover:opacity-75 transition-opacity p-4"
                 />
@@ -870,7 +854,7 @@ const Portfolio = () => {
 
             <div className="flex justify-center">
               <a
-                href="/portfolio-resina.pdf"
+                href="/abf-portfolio/portfolio-resina.pdf"
                 download="Portfolio-Resina-ABF.pdf"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
               >
