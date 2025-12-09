@@ -30,6 +30,7 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('inicio');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [resinCarouselIndex, setResinCarouselIndex] = useState(0);
+  const [resinHoveredImage, setResinHoveredImage] = useState<string | null>(null);
 
   // CSS para animación de scroll infinito
   useEffect(() => {
@@ -784,8 +785,21 @@ const Portfolio = () => {
             </h3>
             
             <div className="relative">
-              {/* Carrusel */}
-              <div className="relative w-full h-96 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6">
+              {/* Carrusel Principal */}
+              <div className="relative w-full h-96 bg-gradient-to-br from-stone-100 to-stone-200 rounded-xl overflow-hidden flex items-center justify-center mb-6 cursor-pointer group"
+                onMouseEnter={() => setResinHoveredImage(
+                  [
+                    '/images/resin/BOWTIE_PHOTO_02.png',
+                    '/images/resin/CENICERO_PHOTO_01.png',
+                    '/images/resin/CENICERO_PHOTO_02.png',
+                    '/images/resin/CORAZON_PHOTO_01.jpeg',
+                    '/images/resin/CUADRO_PHOTO_01.png',
+                    '/images/resin/CUADRO_PHOTO_03.png',
+                    '/images/resin/ME_PHOTO_02.jpeg',
+                  ][resinCarouselIndex]
+                )}
+                onMouseLeave={() => setResinHoveredImage(null)}
+              >
                 <img
                   src={[
                     '/images/resin/BOWTIE_PHOTO_02.png',
@@ -797,7 +811,7 @@ const Portfolio = () => {
                     '/images/resin/ME_PHOTO_02.jpeg',
                   ][resinCarouselIndex]}
                   alt={`Pieza de resina ${resinCarouselIndex + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:opacity-75 transition-opacity"
                 />
                 <div className="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-white text-sm">
                   {resinCarouselIndex + 1} / 7
@@ -822,6 +836,31 @@ const Portfolio = () => {
                 </button>
               </div>
 
+              {/* Preview Modal al pasar el mouse */}
+              {resinHoveredImage && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 backdrop-blur-sm"
+                  onClick={() => setResinHoveredImage(null)}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl p-4 max-w-2xl max-h-[80vh] flex flex-col"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="relative flex-1 flex items-center justify-center">
+                      <img
+                        src={resinHoveredImage}
+                        alt="Vista ampliada"
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <button
+                      onClick={() => setResinHoveredImage(null)}
+                      className="mt-4 w-full py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors"
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* Indicadores */}
               <div className="flex justify-center gap-2">
                 {[...Array(7)].map((_, i) => (
@@ -840,7 +879,7 @@ const Portfolio = () => {
             </div>
 
             <p className="text-center text-stone-600 text-sm mt-6">
-              Haz clic en los indicadores o usa los botones de navegación para explorar la galería completa de piezas en resina ecológica.
+              Pasa el mouse sobre la imagen para ver una vista ampliada. Usa los botones de navegación para explorar la galería completa de piezas en resina ecológica.
             </p>
           </div>
         </div>
